@@ -1,6 +1,14 @@
+
+using ControleDeContatos.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddDbContext<BancoContext>(options => 
+options.UseSqlServer(builder.Configuration.GetConnectionString("ConexaoPadrao"))
+);
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
